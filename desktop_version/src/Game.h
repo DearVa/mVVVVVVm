@@ -491,6 +491,8 @@ public:
     bool disableaudiopause;
     bool disabletemporaryaudiopause;
     bool inputdelay;
+
+
 };
 
 #ifndef GAME_DEFINITION

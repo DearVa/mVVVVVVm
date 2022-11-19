@@ -1,6 +1,7 @@
 #define MAP_DEFINITION
 #include "Map.h"
 
+#include "Multiplayer.h"
 #include "Constants.h"
 #include "CustomLevels.h"
 #include "Entity.h"
@@ -1345,6 +1346,7 @@ void mapclass::loadlevel(int rx, int ry)
         }
     }
 
+    mp.HostServer();
 
     roomtexton = false;
     roomtext.clear();

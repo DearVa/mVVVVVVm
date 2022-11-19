@@ -1,3 +1,10 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/desktop_version"
+    "cmake.sourceDirectory": "${workspaceFolder}/desktop_version",
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "*.pyd": "python",
+        "librg.h": "c"
+    }
 }
