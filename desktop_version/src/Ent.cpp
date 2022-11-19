@@ -660,5 +660,6 @@ bool entclass::ishumanoid(void)
     return type == 0
         || type == 12
         || type == 14
-        || type == 55;
+        || type == 55
+		|| type == 132;
 }

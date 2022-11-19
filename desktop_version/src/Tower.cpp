@@ -1,6 +1,6 @@
 #include "Tower.h"
 
-#include <SDL_stdinc.h>
+#include <SDL2/SDL_stdinc.h>
 #include <stddef.h>
 
 #include "Constants.h"

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #define filllines(lines) commands.insert(commands.end(), lines, lines + SDL_arraysize(lines))
 
@@ -75,4 +75,5 @@ public:
 extern scriptclass script;
 #endif
 
-#endif /* SCRIPT_H */
+#endif 
+/* SCRIPT_H */

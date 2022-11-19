@@ -1,7 +1,7 @@
 #define MUSIC_DEFINITION
 #include "Music.h"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <FAudio.h>
 #include <physfsrwops.h>
 

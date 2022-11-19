@@ -1,7 +1,7 @@
 #define OBJ_DEFINITION
 #include "Entity.h"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "CustomLevels.h"
 #include "Game.h"
@@ -1230,6 +1230,18 @@ static void entityclonefix(entclass* entity)
     }
 }
 
+/**
+ * \brief 
+ * \param xp xpos
+ * \param yp ypos
+ * \param t type
+ * \param meta1 附加参数，type不同效果也不同
+ * \param meta2 附加参数，type不同效果也不同
+ * \param p1 
+ * \param p2 
+ * \param p3 
+ * \param p4 
+ */
 void entityclass::createentity(int xp, int yp, int t, int meta1, int meta2, int p1, int p2, int p3, int p4)
 {
     k = entities.size();
@@ -2124,6 +2136,25 @@ void entityclass::createentity(int xp, int yp, int t, int meta1, int meta2, int 
 
         entityclonefix(&entity);
         break;
+
+      case 132: // Another player
+          entity.type = 132;
+          entity.rule = 132; //Playable character
+          entity.tile = 0;
+          entity.colour = meta2;
+          entity.cx = 6;
+          entity.cy = 2;
+          entity.w = 12;
+          entity.h = 21;
+          entity.dir = meta1;
+          
+          entity.xp = xp;
+          entity.yp = yp;
+
+          // if (meta1 == 1) entity.invis = true;
+
+          entity.gravity = true;
+          break;
     }
 
     entity.lerpoldxp = entity.xp;

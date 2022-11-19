@@ -1,7 +1,7 @@
 #define HELP_DEFINITION
 #include "UtilityClass.h"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <sstream>
 
 #include "Constants.h"
@@ -248,6 +248,19 @@ std::string UtilityClass::number_words( int _t )
     {
         return tens_place[(_t/10)-1] + " " + ones_place[(_t%10)-1];
     }
+}
+
+#include <SDL2/SDL_syswm.h>
+#include <imm.h>  
+#pragma comment (lib ,"imm32.lib") 
+
+void UtilityClass::DisableIME(SDL_Window* window)
+{
+    SDL_SysWMinfo wmInfo;
+    SDL_VERSION(&wmInfo.version);
+    SDL_GetWindowWMInfo(window, &wmInfo);
+    // Ω˚”√ ‰»Î∑®
+    ImmAssociateContext(wmInfo.info.win.window, NULL);
 }
 
 bool UtilityClass::intersects( SDL_Rect A, SDL_Rect B )

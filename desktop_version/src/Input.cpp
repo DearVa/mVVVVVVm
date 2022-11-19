@@ -393,7 +393,7 @@ static void menuactionpress(void)
             {
                 //Bring you to the normal playmenu
                 music.playef(11);
-                game.createmenu(Menu::play);
+                game.createmenu(Menu::start);
                 map.nexttowercolour();
             }
             break;
@@ -1419,7 +1419,29 @@ static void menuactionpress(void)
             break;
         }
         break;
-    case Menu::play:
+    case Menu::start:
+    {
+	    switch (game.currentmenuoption)
+	    {
+	    case 0:
+            music.playef(11);
+            game.createmenu(Menu::hostgame);
+            map.nexttowercolour();
+            break;
+	    case 1:
+            music.playef(11);
+            game.createmenu(Menu::joingame);
+            map.nexttowercolour();
+            break;
+	    default:  // back
+            music.playef(11);
+            game.returnmenu();
+            map.nexttowercolour();
+            break;
+	    }
+        break;
+    }
+    case Menu::hostgame:
     {
         //Do we have the Secret Lab option?
         int sloffset = game.unlock[8] ? 0 : -1;
@@ -1435,13 +1457,13 @@ static void menuactionpress(void)
                 music.playef(11);
                 startmode(0);
             }
-            else if (game.telesummary == "")
+            else if (game.telesummary.empty())
             {
                 //You at least have a quicksave, or you couldn't have gotten here
                 music.playef(11);
                 startmode(2);
             }
-            else if (game.quicksummary == "")
+            else if (game.quicksummary.empty())
             {
                 //You at least have a telesave, or you couldn't have gotten here
                 music.playef(11);
@@ -1726,7 +1748,7 @@ static void menuactionpress(void)
     case Menu::unlockflipmode:
         //back
         music.playef(11);
-        game.createmenu(Menu::play, true);
+        game.createmenu(Menu::hostgame, true);
         map.nexttowercolour();
         break;
     case Menu::timetrials:

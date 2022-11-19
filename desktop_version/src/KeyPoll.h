@@ -2,7 +2,7 @@
 #define KEYPOLL_H
 
 #include <map> // FIXME: I should feel very bad for using C++ -flibit
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <vector>
 

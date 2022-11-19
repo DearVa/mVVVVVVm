@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <vector>
 
@@ -72,7 +72,9 @@ namespace Menu
         credits4,
         credits5,
         credits6,
-        play,
+        start,
+        hostgame,
+        joingame,
         unlocktimetrial,
         unlocktimetrials,
         unlocknodeathmode,

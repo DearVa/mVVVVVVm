@@ -2,7 +2,7 @@
 #include "Script.h"
 
 #include <limits.h>
-#include <SDL_timer.h>
+#include <SDL2/SDL_timer.h>
 
 #include "CustomLevels.h"
 #include "Editor.h"

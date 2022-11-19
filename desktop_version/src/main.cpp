@@ -1,4 +1,6 @@
-#include <SDL.h>
+#include <SDL2/SDL.h>
+#include <enet/enet.h>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #include <emscripten/html5.h>
@@ -20,6 +22,7 @@
 #include "Map.h"
 #include "Music.h"
 #include "Network.h"
+#include "Multiplayer.h"
 #include "preloader.h"
 #include "ReleaseVersion.h"
 #include "Render.h"
@@ -42,6 +45,7 @@ editorclass ed;
 UtilityClass help;
 Graphics graphics;
 musicclass music;
+Multiplayer mp;
 Game game;
 KeyPoll key;
 mapclass map;
@@ -408,7 +412,7 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
         if (ARG("-version"))
         {
             /* Just print the version and exit. No vlogging. */
-            puts("VVVVVV " RELEASE_VERSION);
+            puts("MVVVVVVM " RELEASE_VERSION);
 #ifdef INTERIM_VERSION_EXISTS
             puts(COMMIT_DATE);
             puts(INTERIM_COMMIT);
@@ -542,10 +546,15 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
     }
 
     NETWORK_init();
+    if (!mp.Initialize())
+    {
+        vlog_error("Unable to initialize multiplayer!");
+        VVV_exit(1);
+    }
 
     vlog_info("\t\t");
     vlog_info("\t\t");
-    vlog_info("\t\t       VVVVVV");
+    vlog_info("\t\t      MVVVVVVM");
     vlog_info("\t\t");
     vlog_info("\t\t");
     vlog_info("\t\t  8888888888888888  ");
@@ -771,6 +780,7 @@ static void cleanup(void)
     graphics.destroy_buffers();
     graphics.destroy();
     music.destroy();
+    mp.Deinitialize();
     NETWORK_shutdown();
     SDL_Quit();
     FILESYSTEM_deinit();

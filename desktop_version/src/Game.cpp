@@ -6291,7 +6291,12 @@ void Game::createmenu( enum Menu::MenuName t, bool samemenu/*= false*/ )
         option("return");
         menuyoff = 64;
         break;
-    case Menu::play:
+    case Menu::start:
+        option("host world");
+        option("join world");
+        option("return");
+        break;
+    case Menu::hostgame:
     {
         //Ok, here's where the unlock stuff comes into it:
         //First up, time trials:
@@ -6414,6 +6419,8 @@ void Game::createmenu( enum Menu::MenuName t, bool samemenu/*= false*/ )
         }
         break;
     }
+    case Menu::joingame:
+        break;
     case Menu::unlocktimetrial:
     case Menu::unlocktimetrials:
     case Menu::unlocknodeathmode:
@@ -6768,7 +6775,7 @@ void Game::quittomenu(void)
     }
     else if (save_exists() || anything_unlocked())
     {
-        returntomenu(Menu::play);
+        returntomenu(Menu::hostgame);
         if (!insecretlab)
         {
             //Select "continue"

@@ -3,7 +3,7 @@
 #ifndef MAKEANDPLAY
 
 #include <stdint.h>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #include "Vlogging.h"
 

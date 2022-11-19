@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#include <SDL_stdinc.h>
+#include <SDL2/SDL_stdinc.h>
 
 void vlog_init(void);
 

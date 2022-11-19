@@ -1,7 +1,7 @@
 #define GRAPHICS_DEFINITION
 #include "Graphics.h"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <utf8/unchecked.h>
 
 #include "Constants.h"

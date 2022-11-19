@@ -1,7 +1,7 @@
 #ifndef UTILITYCLASS_H
 #define UTILITYCLASS_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <vector>
 
@@ -103,6 +103,7 @@ public:
 
     std::string number_words(int _t);
 
+    static void DisableIME(SDL_Window* window);
 
     static bool intersects( SDL_Rect A, SDL_Rect B );
 

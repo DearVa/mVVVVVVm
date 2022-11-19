@@ -1,6 +1,6 @@
 #include "BinaryBlob.h"
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #ifdef VVV_COMPILEMUSIC
 #include <stdio.h>
 #endif
