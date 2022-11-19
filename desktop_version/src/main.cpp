@@ -364,8 +364,24 @@ static void emscriptenloop(void)
 }
 #endif
 
-int main(int argc, char *argv[])
+#include <Windows.h>
+
+int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
+	int argc;
+    LPWSTR* argList = CommandLineToArgvW(reinterpret_cast<LPCWSTR>(GetCommandLine()), &argc);
+    LPSTR* argv = new LPSTR[argc];
+    for (auto i = 0; i < argc; i++)
+    {
+        auto len = wcslen(argList[i]);
+        argv[i] = new char[len + 1];
+        argv[i][len] = '\0';
+        for (auto j = 0; j < len; j++)
+        {
+            argv[i][j] = static_cast<char>(argList[i][j]);
+        }
+    }
+
     char* baseDir = NULL;
     char* assetsPath = NULL;
     bool seed_use_sdl_getticks = false;
