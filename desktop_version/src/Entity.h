@@ -104,6 +104,8 @@ public:
 
     int getplayer(void);
 
+    int getotherplayer(int id);
+
     int getscm(void);
 
     int getlineat(int t);

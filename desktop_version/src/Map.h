@@ -85,10 +85,22 @@ public:
 
     const char* currentarea(int t);
 
+    /// <summary>
+    /// 根据rx ry计算t
+    /// </summary>
+    /// <param name="rx"></param>
+    /// <param name="ry"></param>
+    /// <returns></returns>
+    int calct(int rx, int ry);
+
     void loadlevel(int rx, int ry);
 
     void twoframedelayfix(void);
 
+    /// <summary>
+    /// 当前所处的level
+    /// </summary>
+    int currentRx, currentRy;
 
     int roomdeaths[20 * 20];
     int roomdeathsfinal[20 * 20];

@@ -1,6 +1,7 @@
 #define OBJ_DEFINITION
 #include "Entity.h"
 
+#include <Multiplayer.h>
 #include <SDL2/SDL.h>
 
 #include "CustomLevels.h"
@@ -1251,13 +1252,9 @@ void entityclass::createentity(int xp, int yp, int t, int meta1, int meta2, int 
 
     /* Can we reuse the slot of a disabled entity? */
     bool reuse = false;
-    for (size_t i = 0; i < entities.size(); ++i)
+    for (size_t i = 0; i < k; ++i)
     {
-        if (entities[i].invis
-        && entities[i].size == -1
-        && entities[i].type == -1
-        && entities[i].rule == -1
-        && !entities[i].isplatform)
+        if (entities[i].invis && entities[i].size == -1 && entities[i].type == -1 && entities[i].rule == -1 && !entities[i].isplatform)
         {
             reuse = true;
             entptr = &entities[i];
@@ -1316,6 +1313,8 @@ void entityclass::createentity(int xp, int yp, int t, int meta1, int meta2, int 
         /* Fix wrong y-position if spawning in on conveyor */
         entity.newxp = xp;
         entity.newyp = yp;
+
+        entity.id = mp.currentID;
 
         if (meta1 == 1) entity.invis = true;
 
@@ -2147,13 +2146,16 @@ void entityclass::createentity(int xp, int yp, int t, int meta1, int meta2, int 
           entity.w = 12;
           entity.h = 21;
           entity.dir = meta1;
+          entity.id = p1;
           
           entity.xp = xp;
           entity.yp = yp;
 
+          entity.invis = p2;
+
           // if (meta1 == 1) entity.invis = true;
 
-          entity.gravity = true;
+          entity.gravity = false;
           break;
     }
 
@@ -3708,6 +3710,7 @@ void entityclass::animateentities( int _i )
                 entities[_i].drawframe += entities[_i].walkingframe;
             }
             break;
+        case 132:
         case 12:
         case 55:
         case 14: //Crew member! Very similar to hero
@@ -3927,6 +3930,20 @@ int entityclass::getplayer(void)
     for (size_t i = 0; i < entities.size(); i++)
     {
         if(entities[i].type==0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int entityclass::getotherplayer(int id)
+{
+    //Returns the index of the first player entity
+    for (size_t i = 0; i < entities.size(); i++)
+    {
+        if(entities[i].type == 132 && entities[i].id == id)
         {
             return i;
         }

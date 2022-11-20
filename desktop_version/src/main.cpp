@@ -373,7 +373,7 @@ static void emscriptenloop(void)
 int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
 	int argc;
-    LPWSTR* argList = CommandLineToArgvW(reinterpret_cast<LPCWSTR>(GetCommandLine()), &argc);
+    LPWSTR* argList = CommandLineToArgvW(GetCommandLineW(), &argc);
     LPSTR* argv = new LPSTR[argc];
     for (auto i = 0; i < argc; i++)
     {

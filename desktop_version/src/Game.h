@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "ScreenSettings.h"
+#include "protobuf/mvvvvvvm.pb.h"
 
 /* FIXME: Can't forward declare this enum in C++, unfortunately.
  * In C, enum sizes are always the same, so you can forward declare them.
@@ -218,6 +219,9 @@ public:
     std::string writemaingamesave(tinyxml2::XMLDocument& doc);
 
     void initteleportermode(void);
+
+    void GetTSave(TSave &save);
+    void LoadTSave(TSave &save);
 
     const char* saveFilePath;
 

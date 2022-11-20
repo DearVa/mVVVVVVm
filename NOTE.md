@@ -15,4 +15,16 @@
 
 
 
-RLRFRRL
+RRLRFRRL
+
+
+
+Entities定义：
+
+0 ~ MAX_CLIENT_COUNT 为玩家实体，玩家实体的id就是实体id，这与owner_id相同
+
+
+
+INT64_MAX / 2 ~ INT64_MAX 为传输消息所用的实体，其中
+
+INT64_MAX / 2 = 世界存档

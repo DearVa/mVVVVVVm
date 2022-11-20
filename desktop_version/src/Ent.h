@@ -51,7 +51,9 @@ public:
     int framedelay, drawframe, walkingframe, dir, actionframe;
     int collisionframedelay, collisiondrawframe, collisionwalkingframe;
     int visualonground, visualonroof;
-    int yp;int xp;
+    int yp;
+	int xp;
+    Uint32 id;
 
     Uint32 realcol;
     int lerpoldxp, lerpoldyp;

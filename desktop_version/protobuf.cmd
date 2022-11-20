@@ -1,0 +1,1 @@
+protoc mvvvvvvm.proto --cpp_out=.\src\protobuf

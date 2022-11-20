@@ -1,3 +1,5 @@
+#include <Multiplayer.h>
+
 #include "Credits.h"
 #include "Entity.h"
 #include "Enums.h"
@@ -1459,6 +1461,7 @@ void gamelogic(void)
     if (game.teleport_to_new_area)
         script.teleport();
 
+    mp.Update();
 #undef gotoroom
 #undef GOTOROOM
 }

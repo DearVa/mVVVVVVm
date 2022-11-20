@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+message World {
+    string name = 1;
+    int32 playerCount = 2;
+    int32 maxPlayerCount = 3;
+}
+
+message TSave {
+    repeated bool worldmap = 1;
+    repeated bool flags = 2;
+    repeated bool crewstats = 3;
+    repeated bool collect = 4;
+    int32 savex = 5;
+    int32 savey = 6;
+    int32 saverx = 7;
+    int32 savery = 8;
+    int32 savegc = 9;
+    int32 savedir = 10;
+    int32 savepoint = 11;
+    int32 trinkets = 12;
+    int32 currentsong = 13;
+    bool showtargets = 14;
+    string teleportscript = 15;
+    int32 companion = 16;
+    int32 lastsaved = 17;
+    bool supercrewmate = 18;
+    int32 scmprogress = 19;
+    int32 frames = 20;
+    int32 seconds = 21;
+    int32 minutes = 22;
+    int32 hours = 23;
+    int32 deathcounts = 24;
+    int32 totalflips = 25;
+    string hardestroom = 26;
+    int32 hardestroomdeaths = 27;
+    bool finalmode = 28;
+    bool finalstretch = 29;
+    string summary = 30;
+}
+
+message PlayerStatus {
+    int32 id = 1;
+    int32 rx = 2;
+    int32 ry = 3;
+    int32 x = 4;
+    int32 y = 5;
+    float vx = 6;
+    float vy = 7;
+    int32 dir = 8;
+    int32 tile = 9;
+    int32 flip = 10;
+}

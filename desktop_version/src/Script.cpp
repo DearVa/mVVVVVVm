@@ -2,6 +2,7 @@
 #include "Script.h"
 
 #include <limits.h>
+#include <Multiplayer.h>
 #include <SDL2/SDL_timer.h>
 
 #include "CustomLevels.h"
@@ -2391,6 +2392,10 @@ void scriptclass::startgamemode( int t )
         graphics.showcutscenebars = true;
         graphics.setbars(320);
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         else obj.flags[73] = true;
@@ -2413,6 +2418,10 @@ void scriptclass::startgamemode( int t )
         game.gravitycontrol = game.savegc;
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         else obj.flags[73] = true;
@@ -2433,6 +2442,10 @@ void scriptclass::startgamemode( int t )
         game.loadquick();
         game.gravitycontrol = game.savegc;
         game.jumpheld = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2514,6 +2527,10 @@ void scriptclass::startgamemode( int t )
         game.starttrial(game.timetriallevel);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         if (graphics.setflipmode) graphics.flipmode = true;//set flipmode
         if (obj.entities.empty())
         {
@@ -2529,6 +2546,9 @@ void scriptclass::startgamemode( int t )
         hardreset();
         game.nodeathmode = true;
         game.start();
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
         game.jumpheld = true;
         graphics.showcutscenebars = true;
         graphics.setbars(320);
@@ -2554,6 +2574,9 @@ void scriptclass::startgamemode( int t )
         game.nocutscenes = true;
 
         game.start();
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
         game.jumpheld = true;
         graphics.showcutscenebars = true;
         graphics.setbars(320);
@@ -2577,6 +2600,9 @@ void scriptclass::startgamemode( int t )
         hardreset();
 
         game.startspecial(0);
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
         game.jumpheld = true;
 
         //Secret lab, so reveal the map, give them all 20 trinkets
@@ -2618,6 +2644,10 @@ void scriptclass::startgamemode( int t )
         game.startspecial(1);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         if(obj.entities.empty())
@@ -2648,6 +2678,10 @@ void scriptclass::startgamemode( int t )
         map.final_colorframe = 0;
         game.startspecial(1);
         game.jumpheld = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2680,6 +2714,10 @@ void scriptclass::startgamemode( int t )
         game.startspecial(1);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         if(obj.entities.empty())
@@ -2711,6 +2749,10 @@ void scriptclass::startgamemode( int t )
         game.startspecial(1);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         if(obj.entities.empty())
@@ -2738,6 +2780,10 @@ void scriptclass::startgamemode( int t )
         map.final_colorframe = 0;
         game.startspecial(1);
         game.jumpheld = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2767,6 +2813,10 @@ void scriptclass::startgamemode( int t )
         game.startspecial(1);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         if(obj.entities.empty())
@@ -2794,6 +2844,10 @@ void scriptclass::startgamemode( int t )
         map.final_colorframe = 0;
         game.startspecial(1);
         game.jumpheld = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2823,6 +2877,10 @@ void scriptclass::startgamemode( int t )
         game.startspecial(1);
         game.jumpheld = true;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
+
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
         if(obj.entities.empty())
@@ -2848,6 +2906,10 @@ void scriptclass::startgamemode( int t )
 
         game.gamestate = EDITORMODE;
         game.jumpheld = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         if (graphics.setflipmode) graphics.flipmode = true;//set flipmode
         if(obj.entities.empty())
@@ -2877,6 +2939,10 @@ void scriptclass::startgamemode( int t )
         ed.ghosts.clear();
 
         map.custommode = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2915,6 +2981,10 @@ void scriptclass::startgamemode( int t )
 
         map.custommodeforreal = true;
         map.custommode = true;
+
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2960,6 +3030,9 @@ void scriptclass::startgamemode( int t )
         game.jumpheld = true;
         game.gravitycontrol = game.savegc;
 
+        if (mp.isServer) {
+            mp.StartMultiPlayer();
+        }
 
         //set flipmode
         if (graphics.setflipmode) graphics.flipmode = true;
@@ -2978,6 +3051,29 @@ void scriptclass::startgamemode( int t )
 #endif /* NO_CUSTOM_LEVELS */
     case 100:
         VVV_exit(0);
+        break;
+    case 132:  // 加入他人的世界
+        game.gamestate = GAMEMODE;
+        hardreset();
+        game.start();
+
+        game.LoadTSave((*mp.messageEntities.find(INT64_MAX / 2)).second.t_save);
+
+        game.gravitycontrol = game.savegc;
+        game.jumpheld = true;
+
+        //set flipmode
+        if (graphics.setflipmode) graphics.flipmode = true;
+        else obj.flags[73] = true;
+
+        if (obj.entities.empty())
+        {
+            obj.createentity(game.savex, game.savey, 0, 0); //In this game, constant, never destroyed
+        }
+        map.resetplayer();
+        map.gotoroom(game.saverx, game.savery);
+        map.initmapdata();
+        graphics.fademode = FADE_START_FADEIN;
         break;
     }
 }

@@ -1334,9 +1334,45 @@ static void copy_short_to_int(int* dest, const short* src, const size_t size)
     }
 }
 
+int mapclass::calct(int rx, int ry)
+{
+    if (finalmode)
+    {
+        //check if we're in the towers
+        if (rx == 49 && ry == 52)
+        {
+            //entered tower 1
+            return 7;
+        }
+        if (rx == 49 && ry == 53)
+        {
+	        //re entered tower 1
+	        return 8;
+        }
+        if (rx == 51 && ry == 54)
+        {
+	        //entered tower 2
+	        return 9;
+        }
+        if (rx == 51 && ry == 53)
+        {
+	        //re entered tower 2
+	        return 10;
+        }
+        return 6;
+    }
+    if (custommode)
+    {
+	    return 12;
+    }
+    return area(rx, ry);
+}
+
 void mapclass::loadlevel(int rx, int ry)
 {
-    int t;
+    currentRx = rx;
+    currentRy = ry;
+
     if (!finalmode)
     {
         setexplored(rx - 100, ry - 100, true);
@@ -1345,8 +1381,6 @@ void mapclass::loadlevel(int rx, int ry)
             exploretower();
         }
     }
-
-    mp.HostServer();
 
     roomtexton = false;
     roomtext.clear();
@@ -1375,46 +1409,17 @@ void mapclass::loadlevel(int rx, int ry)
     obj.customwarpmodevon=false;
     obj.customwarpmodehon=false;
 
-    if (finalmode)
-    {
-        t = 6;
-        //check if we're in the towers
-        if (rx == 49 && ry == 52)
-        {
-            //entered tower 1
-            t = 7;
-        }
-        else if (rx == 49 && ry == 53)
-        {
-            //re entered tower 1
-            t = 8;
-        }
-        else if (rx == 51 && ry == 54)
-        {
-            //entered tower 2
-            t = 9;
-        }
-        else if (rx == 51 && ry == 53)
-        {
-            //re entered tower 2
-            t = 10;
-        }
-    }
-    else if (custommode)
-    {
-        t= 12;
-    }
-    else
-    {
-        t = area(rx, ry);
+    int t = calct(rx, ry);
+    int player = obj.getplayer();
 
+    if (!finalmode && !custommode)
+    {
         if (t == 3)
         {
             //correct position for tower
             if (ry == 109)
             {
                 //entered from ground floor
-                int player = obj.getplayer();
                 if (INBOUNDS_VEC(player, obj.entities))
                 {
                     obj.entities[player].yp += (671 * 8);
@@ -1627,11 +1632,10 @@ void mapclass::loadlevel(int rx, int ry)
         towermode = true;
 
         tower.loadminitower1();
-
-        int i = obj.getplayer();
-        if (INBOUNDS_VEC(i, obj.entities))
+        
+        if (INBOUNDS_VEC(player, obj.entities))
         {
-            obj.entities[i].yp += (71 * 8);
+            obj.entities[player].yp += (71 * 8);
         }
         game.roomy--;
 
@@ -1670,11 +1674,10 @@ void mapclass::loadlevel(int rx, int ry)
         obj.createentity(56, 212, 11, 144); // (horizontal gravity line)
         obj.createentity(32, 20, 11, 96); // (horizontal gravity line)
         obj.createentity(72, 156, 11, 200); // (horizontal gravity line)
-
-        int i = obj.getplayer();
-        if (INBOUNDS_VEC(i, obj.entities))
+        
+        if (INBOUNDS_VEC(player, obj.entities))
         {
-            obj.entities[i].yp += (71 * 8);
+            obj.entities[player].yp += (71 * 8);
         }
         game.roomy--;
 
@@ -2203,6 +2206,15 @@ void mapclass::loadlevel(int rx, int ry)
                 obj.createblock(5, 249-32, 0, 32+32+32, 240, 5);
             }
         }
+    }
+
+    for (const auto& [_, snd] : mp.playerList)
+    {
+        //if (INBOUNDS_VEC(player, obj.entities) && obj.entities[player].id == status.id)
+        //{
+        //    continue;  // 不要添加自己
+        //}
+        obj.createentity(snd->x(), snd->y(), 132, snd->dir(), 8, snd->id(), snd->rx() != currentRx || snd->ry() != currentRy);  // 创建其他玩家实体
     }
 }
 
