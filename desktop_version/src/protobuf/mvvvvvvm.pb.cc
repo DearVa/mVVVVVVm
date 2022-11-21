@@ -20,23 +20,6 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
-PROTOBUF_CONSTEXPR World::World(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.playercount_)*/0
-  , /*decltype(_impl_.maxplayercount_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct WorldDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WorldDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WorldDefaultTypeInternal() {}
-  union {
-    World _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WorldDefaultTypeInternal _World_default_instance_;
 PROTOBUF_CONSTEXPR TSave::TSave(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.worldmap_)*/{}
@@ -105,7 +88,6 @@ PROTOBUF_CONSTEXPR MessageEntity::MessageEntity(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.world_)*/nullptr
   , /*decltype(_impl_.tsave_)*/nullptr
   , /*decltype(_impl_.ps_)*/nullptr
   , /*decltype(_impl_.id_)*/int64_t{0}
@@ -119,22 +101,11 @@ struct MessageEntityDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MessageEntityDefaultTypeInternal _MessageEntity_default_instance_;
-static ::_pb::Metadata file_level_metadata_mvvvvvvm_2eproto[4];
+static ::_pb::Metadata file_level_metadata_mvvvvvvm_2eproto[3];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_mvvvvvvm_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_mvvvvvvm_2eproto = nullptr;
 
 const uint32_t TableStruct_mvvvvvvm_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::World, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::World, _impl_.id_),
-  PROTOBUF_FIELD_OFFSET(::World, _impl_.name_),
-  PROTOBUF_FIELD_OFFSET(::World, _impl_.password_),
-  PROTOBUF_FIELD_OFFSET(::World, _impl_.playercount_),
-  PROTOBUF_FIELD_OFFSET(::World, _impl_.maxplayercount_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::TSave, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -195,63 +166,56 @@ const uint32_t TableStruct_mvvvvvvm_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::MessageEntity, _impl_.id_),
   PROTOBUF_FIELD_OFFSET(::MessageEntity, _impl_.type_),
-  PROTOBUF_FIELD_OFFSET(::MessageEntity, _impl_.world_),
   PROTOBUF_FIELD_OFFSET(::MessageEntity, _impl_.tsave_),
   PROTOBUF_FIELD_OFFSET(::MessageEntity, _impl_.ps_),
   ~0u,
   ~0u,
   0,
   1,
-  2,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::World)},
-  { 11, -1, -1, sizeof(::TSave)},
-  { 47, -1, -1, sizeof(::PlayerStatus)},
-  { 63, 74, -1, sizeof(::MessageEntity)},
+  { 0, -1, -1, sizeof(::TSave)},
+  { 36, -1, -1, sizeof(::PlayerStatus)},
+  { 52, 62, -1, sizeof(::MessageEntity)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::_World_default_instance_._instance,
   &::_TSave_default_instance_._instance,
   &::_PlayerStatus_default_instance_._instance,
   &::_MessageEntity_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_mvvvvvvm_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016mvvvvvvm.proto\"`\n\005World\022\n\n\002Id\030\001 \001(\t\022\014\n"
-  "\004name\030\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\023\n\013playerC"
-  "ount\030\004 \001(\005\022\026\n\016maxPlayerCount\030\005 \001(\005\"\270\004\n\005T"
-  "Save\022\020\n\010worldmap\030\001 \003(\010\022\r\n\005flags\030\002 \003(\010\022\021\n"
-  "\tcrewstats\030\003 \003(\010\022\017\n\007collect\030\004 \003(\010\022\r\n\005sav"
-  "ex\030\005 \001(\005\022\r\n\005savey\030\006 \001(\005\022\016\n\006saverx\030\007 \001(\005\022"
-  "\016\n\006savery\030\010 \001(\005\022\016\n\006savegc\030\t \001(\005\022\017\n\007saved"
-  "ir\030\n \001(\005\022\021\n\tsavepoint\030\013 \001(\005\022\020\n\010trinkets\030"
-  "\014 \001(\005\022\023\n\013currentsong\030\r \001(\005\022\023\n\013showtarget"
-  "s\030\016 \001(\010\022\026\n\016teleportscript\030\017 \001(\t\022\021\n\tcompa"
-  "nion\030\020 \001(\005\022\021\n\tlastsaved\030\021 \001(\005\022\025\n\rsupercr"
-  "ewmate\030\022 \001(\010\022\023\n\013scmprogress\030\023 \001(\005\022\016\n\006fra"
-  "mes\030\024 \001(\005\022\017\n\007seconds\030\025 \001(\005\022\017\n\007minutes\030\026 "
-  "\001(\005\022\r\n\005hours\030\027 \001(\005\022\023\n\013deathcounts\030\030 \001(\005\022"
-  "\022\n\ntotalflips\030\031 \001(\005\022\023\n\013hardestroom\030\032 \001(\t"
-  "\022\031\n\021hardestroomdeaths\030\033 \001(\005\022\021\n\tfinalmode"
-  "\030\034 \001(\010\022\024\n\014finalstretch\030\035 \001(\010\022\017\n\007summary\030"
-  "\036 \001(\t\"\211\001\n\014PlayerStatus\022\n\n\002id\030\001 \001(\005\022\n\n\002rx"
-  "\030\002 \001(\005\022\n\n\002ry\030\003 \001(\005\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005"
-  "\022\n\n\002vx\030\006 \001(\002\022\n\n\002vy\030\007 \001(\002\022\013\n\003dir\030\010 \001(\005\022\014\n"
-  "\004tile\030\t \001(\005\022\014\n\004flip\030\n \001(\005\"\252\001\n\rMessageEnt"
-  "ity\022\n\n\002id\030\001 \001(\003\022\032\n\004type\030\002 \001(\0162\014.MessageT"
-  "ype\022\032\n\005world\030\003 \001(\0132\006.WorldH\000\210\001\001\022\032\n\005tsave"
-  "\030\004 \001(\0132\006.TSaveH\001\210\001\001\022\036\n\002ps\030\005 \001(\0132\r.Player"
-  "StatusH\002\210\001\001B\010\n\006_worldB\010\n\006_tsaveB\005\n\003_ps*6"
-  "\n\013MessageType\022\t\n\005WORLD\020\000\022\t\n\005TSAVE\020\001\022\021\n\rP"
-  "LAYER_STATUS\020\002b\006proto3"
+  "\n\016mvvvvvvm.proto\"\270\004\n\005TSave\022\020\n\010worldmap\030\001"
+  " \003(\010\022\r\n\005flags\030\002 \003(\010\022\021\n\tcrewstats\030\003 \003(\010\022\017"
+  "\n\007collect\030\004 \003(\010\022\r\n\005savex\030\005 \001(\005\022\r\n\005savey\030"
+  "\006 \001(\005\022\016\n\006saverx\030\007 \001(\005\022\016\n\006savery\030\010 \001(\005\022\016\n"
+  "\006savegc\030\t \001(\005\022\017\n\007savedir\030\n \001(\005\022\021\n\tsavepo"
+  "int\030\013 \001(\005\022\020\n\010trinkets\030\014 \001(\005\022\023\n\013currentso"
+  "ng\030\r \001(\005\022\023\n\013showtargets\030\016 \001(\010\022\026\n\016telepor"
+  "tscript\030\017 \001(\t\022\021\n\tcompanion\030\020 \001(\005\022\021\n\tlast"
+  "saved\030\021 \001(\005\022\025\n\rsupercrewmate\030\022 \001(\010\022\023\n\013sc"
+  "mprogress\030\023 \001(\005\022\016\n\006frames\030\024 \001(\005\022\017\n\007secon"
+  "ds\030\025 \001(\005\022\017\n\007minutes\030\026 \001(\005\022\r\n\005hours\030\027 \001(\005"
+  "\022\023\n\013deathcounts\030\030 \001(\005\022\022\n\ntotalflips\030\031 \001("
+  "\005\022\023\n\013hardestroom\030\032 \001(\t\022\031\n\021hardestroomdea"
+  "ths\030\033 \001(\005\022\021\n\tfinalmode\030\034 \001(\010\022\024\n\014finalstr"
+  "etch\030\035 \001(\010\022\017\n\007summary\030\036 \001(\t\"\211\001\n\014PlayerSt"
+  "atus\022\n\n\002id\030\001 \001(\005\022\n\n\002rx\030\002 \001(\005\022\n\n\002ry\030\003 \001(\005"
+  "\022\t\n\001x\030\004 \001(\005\022\t\n\001y\030\005 \001(\005\022\n\n\002vx\030\006 \001(\002\022\n\n\002vy"
+  "\030\007 \001(\002\022\013\n\003dir\030\010 \001(\005\022\014\n\004tile\030\t \001(\005\022\014\n\004fli"
+  "p\030\n \001(\005\"\204\001\n\rMessageEntity\022\n\n\002id\030\001 \001(\003\022\032\n"
+  "\004type\030\002 \001(\0162\014.MessageType\022\032\n\005tsave\030\003 \001(\013"
+  "2\006.TSaveH\000\210\001\001\022\036\n\002ps\030\004 \001(\0132\r.PlayerStatus"
+  "H\001\210\001\001B\010\n\006_tsaveB\005\n\003_ps*8\n\013MessageType\022\013\n"
+  "\007UNKNOWN\020\000\022\t\n\005TSAVE\020\001\022\021\n\rPLAYER_STATUS\020\002"
+  "b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_mvvvvvvm_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_mvvvvvvm_2eproto = {
-    false, false, 1062, descriptor_table_protodef_mvvvvvvm_2eproto,
+    false, false, 928, descriptor_table_protodef_mvvvvvvm_2eproto,
     "mvvvvvvm.proto",
-    &descriptor_table_mvvvvvvm_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_mvvvvvvm_2eproto_once, nullptr, 0, 3,
     schemas, file_default_instances, TableStruct_mvvvvvvm_2eproto::offsets,
     file_level_metadata_mvvvvvvm_2eproto, file_level_enum_descriptors_mvvvvvvm_2eproto,
     file_level_service_descriptors_mvvvvvvm_2eproto,
@@ -277,369 +241,6 @@ bool MessageType_IsValid(int value) {
   }
 }
 
-
-// ===================================================================
-
-class World::_Internal {
- public:
-};
-
-World::World(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:World)
-}
-World::World(const World& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  World* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){}
-    , decltype(_impl_.name_){}
-    , decltype(_impl_.password_){}
-    , decltype(_impl_.playercount_){}
-    , decltype(_impl_.maxplayercount_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.id_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_id().empty()) {
-    _this->_impl_.id_.Set(from._internal_id(), 
-      _this->GetArenaForAllocation());
-  }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), 
-      _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), 
-      _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.playercount_, &from._impl_.playercount_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.maxplayercount_) -
-    reinterpret_cast<char*>(&_impl_.playercount_)) + sizeof(_impl_.maxplayercount_));
-  // @@protoc_insertion_point(copy_constructor:World)
-}
-
-inline void World::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){}
-    , decltype(_impl_.name_){}
-    , decltype(_impl_.password_){}
-    , decltype(_impl_.playercount_){0}
-    , decltype(_impl_.maxplayercount_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.id_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.password_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-World::~World() {
-  // @@protoc_insertion_point(destructor:World)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void World::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.id_.Destroy();
-  _impl_.name_.Destroy();
-  _impl_.password_.Destroy();
-}
-
-void World::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void World::Clear() {
-// @@protoc_insertion_point(message_clear_start:World)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.id_.ClearToEmpty();
-  _impl_.name_.ClearToEmpty();
-  _impl_.password_.ClearToEmpty();
-  ::memset(&_impl_.playercount_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.maxplayercount_) -
-      reinterpret_cast<char*>(&_impl_.playercount_)) + sizeof(_impl_.maxplayercount_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* World::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string Id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_id();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "World.Id"));
-        } else
-          goto handle_unusual;
-        continue;
-      // string name = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "World.name"));
-        } else
-          goto handle_unusual;
-        continue;
-      // string password = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_password();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "World.password"));
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 playerCount = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _impl_.playercount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 maxPlayerCount = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          _impl_.maxplayercount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* World::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:World)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string Id = 1;
-  if (!this->_internal_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "World.Id");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_id(), target);
-  }
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "World.name");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_name(), target);
-  }
-
-  // string password = 3;
-  if (!this->_internal_password().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_password().data(), static_cast<int>(this->_internal_password().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "World.password");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_password(), target);
-  }
-
-  // int32 playerCount = 4;
-  if (this->_internal_playercount() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(4, this->_internal_playercount(), target);
-  }
-
-  // int32 maxPlayerCount = 5;
-  if (this->_internal_maxplayercount() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(5, this->_internal_maxplayercount(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:World)
-  return target;
-}
-
-size_t World::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:World)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string Id = 1;
-  if (!this->_internal_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_id());
-  }
-
-  // string name = 2;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_name());
-  }
-
-  // string password = 3;
-  if (!this->_internal_password().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_password());
-  }
-
-  // int32 playerCount = 4;
-  if (this->_internal_playercount() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_playercount());
-  }
-
-  // int32 maxPlayerCount = 5;
-  if (this->_internal_maxplayercount() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_maxplayercount());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData World::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    World::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*World::GetClassData() const { return &_class_data_; }
-
-
-void World::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<World*>(&to_msg);
-  auto& from = static_cast<const World&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:World)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_id().empty()) {
-    _this->_internal_set_id(from._internal_id());
-  }
-  if (!from._internal_name().empty()) {
-    _this->_internal_set_name(from._internal_name());
-  }
-  if (!from._internal_password().empty()) {
-    _this->_internal_set_password(from._internal_password());
-  }
-  if (from._internal_playercount() != 0) {
-    _this->_internal_set_playercount(from._internal_playercount());
-  }
-  if (from._internal_maxplayercount() != 0) {
-    _this->_internal_set_maxplayercount(from._internal_maxplayercount());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void World::CopyFrom(const World& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:World)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool World::IsInitialized() const {
-  return true;
-}
-
-void World::InternalSwap(World* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.id_, lhs_arena,
-      &other->_impl_.id_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.name_, lhs_arena,
-      &other->_impl_.name_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.password_, lhs_arena,
-      &other->_impl_.password_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(World, _impl_.maxplayercount_)
-      + sizeof(World::_impl_.maxplayercount_)
-      - PROTOBUF_FIELD_OFFSET(World, _impl_.playercount_)>(
-          reinterpret_cast<char*>(&_impl_.playercount_),
-          reinterpret_cast<char*>(&other->_impl_.playercount_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata World::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_mvvvvvvm_2eproto_getter, &descriptor_table_mvvvvvvm_2eproto_once,
-      file_level_metadata_mvvvvvvm_2eproto[0]);
-}
 
 // ===================================================================
 
@@ -1657,7 +1258,7 @@ void TSave::InternalSwap(TSave* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TSave::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_mvvvvvvm_2eproto_getter, &descriptor_table_mvvvvvvm_2eproto_once,
-      file_level_metadata_mvvvvvvm_2eproto[1]);
+      file_level_metadata_mvvvvvvm_2eproto[0]);
 }
 
 // ===================================================================
@@ -2084,7 +1685,7 @@ void PlayerStatus::InternalSwap(PlayerStatus* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayerStatus::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_mvvvvvvm_2eproto_getter, &descriptor_table_mvvvvvvm_2eproto_once,
-      file_level_metadata_mvvvvvvm_2eproto[2]);
+      file_level_metadata_mvvvvvvm_2eproto[1]);
 }
 
 // ===================================================================
@@ -2092,24 +1693,16 @@ void PlayerStatus::InternalSwap(PlayerStatus* other) {
 class MessageEntity::_Internal {
  public:
   using HasBits = decltype(std::declval<MessageEntity>()._impl_._has_bits_);
-  static const ::World& world(const MessageEntity* msg);
-  static void set_has_world(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::TSave& tsave(const MessageEntity* msg);
   static void set_has_tsave(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
   static const ::PlayerStatus& ps(const MessageEntity* msg);
   static void set_has_ps(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 2u;
   }
 };
 
-const ::World&
-MessageEntity::_Internal::world(const MessageEntity* msg) {
-  return *msg->_impl_.world_;
-}
 const ::TSave&
 MessageEntity::_Internal::tsave(const MessageEntity* msg) {
   return *msg->_impl_.tsave_;
@@ -2130,16 +1723,12 @@ MessageEntity::MessageEntity(const MessageEntity& from)
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.world_){nullptr}
     , decltype(_impl_.tsave_){nullptr}
     , decltype(_impl_.ps_){nullptr}
     , decltype(_impl_.id_){}
     , decltype(_impl_.type_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_world()) {
-    _this->_impl_.world_ = new ::World(*from._impl_.world_);
-  }
   if (from._internal_has_tsave()) {
     _this->_impl_.tsave_ = new ::TSave(*from._impl_.tsave_);
   }
@@ -2159,7 +1748,6 @@ inline void MessageEntity::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.world_){nullptr}
     , decltype(_impl_.tsave_){nullptr}
     , decltype(_impl_.ps_){nullptr}
     , decltype(_impl_.id_){int64_t{0}}
@@ -2178,7 +1766,6 @@ MessageEntity::~MessageEntity() {
 
 inline void MessageEntity::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.world_;
   if (this != internal_default_instance()) delete _impl_.tsave_;
   if (this != internal_default_instance()) delete _impl_.ps_;
 }
@@ -2194,16 +1781,12 @@ void MessageEntity::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(_impl_.world_ != nullptr);
-      _impl_.world_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
       GOOGLE_DCHECK(_impl_.tsave_ != nullptr);
       _impl_.tsave_->Clear();
     }
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000002u) {
       GOOGLE_DCHECK(_impl_.ps_ != nullptr);
       _impl_.ps_->Clear();
     }
@@ -2239,25 +1822,17 @@ const char* MessageEntity::_InternalParse(const char* ptr, ::_pbi::ParseContext*
         } else
           goto handle_unusual;
         continue;
-      // optional .World world = 3;
+      // optional .TSave tsave = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr = ctx->ParseMessage(_internal_mutable_world(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional .TSave tsave = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_tsave(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PlayerStatus ps = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+      // optional .PlayerStatus ps = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_ps(), ptr);
           CHK_(ptr);
         } else
@@ -2306,24 +1881,17 @@ uint8_t* MessageEntity::_InternalSerialize(
       2, this->_internal_type(), target);
   }
 
-  // optional .World world = 3;
-  if (_internal_has_world()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::world(this),
-        _Internal::world(this).GetCachedSize(), target, stream);
-  }
-
-  // optional .TSave tsave = 4;
+  // optional .TSave tsave = 3;
   if (_internal_has_tsave()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, _Internal::tsave(this),
+      InternalWriteMessage(3, _Internal::tsave(this),
         _Internal::tsave(this).GetCachedSize(), target, stream);
   }
 
-  // optional .PlayerStatus ps = 5;
+  // optional .PlayerStatus ps = 4;
   if (_internal_has_ps()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(5, _Internal::ps(this),
+      InternalWriteMessage(4, _Internal::ps(this),
         _Internal::ps(this).GetCachedSize(), target, stream);
   }
 
@@ -2344,23 +1912,16 @@ size_t MessageEntity::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    // optional .World world = 3;
+  if (cached_has_bits & 0x00000003u) {
+    // optional .TSave tsave = 3;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.world_);
-    }
-
-    // optional .TSave tsave = 4;
-    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.tsave_);
     }
 
-    // optional .PlayerStatus ps = 5;
-    if (cached_has_bits & 0x00000004u) {
+    // optional .PlayerStatus ps = 4;
+    if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.ps_);
@@ -2397,16 +1958,12 @@ void MessageEntity::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_world()->::World::MergeFrom(
-          from._internal_world());
-    }
-    if (cached_has_bits & 0x00000002u) {
       _this->_internal_mutable_tsave()->::TSave::MergeFrom(
           from._internal_tsave());
     }
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000002u) {
       _this->_internal_mutable_ps()->::PlayerStatus::MergeFrom(
           from._internal_ps());
     }
@@ -2438,23 +1995,19 @@ void MessageEntity::InternalSwap(MessageEntity* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(MessageEntity, _impl_.type_)
       + sizeof(MessageEntity::_impl_.type_)
-      - PROTOBUF_FIELD_OFFSET(MessageEntity, _impl_.world_)>(
-          reinterpret_cast<char*>(&_impl_.world_),
-          reinterpret_cast<char*>(&other->_impl_.world_));
+      - PROTOBUF_FIELD_OFFSET(MessageEntity, _impl_.tsave_)>(
+          reinterpret_cast<char*>(&_impl_.tsave_),
+          reinterpret_cast<char*>(&other->_impl_.tsave_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata MessageEntity::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_mvvvvvvm_2eproto_getter, &descriptor_table_mvvvvvvm_2eproto_once,
-      file_level_metadata_mvvvvvvm_2eproto[3]);
+      file_level_metadata_mvvvvvvm_2eproto[2]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::World*
-Arena::CreateMaybeMessage< ::World >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::World >(arena);
-}
 template<> PROTOBUF_NOINLINE ::TSave*
 Arena::CreateMaybeMessage< ::TSave >(Arena* arena) {
   return Arena::CreateMessageInternal< ::TSave >(arena);

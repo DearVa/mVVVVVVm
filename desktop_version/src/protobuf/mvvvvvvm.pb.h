@@ -54,25 +54,21 @@ extern PlayerStatusDefaultTypeInternal _PlayerStatus_default_instance_;
 class TSave;
 struct TSaveDefaultTypeInternal;
 extern TSaveDefaultTypeInternal _TSave_default_instance_;
-class World;
-struct WorldDefaultTypeInternal;
-extern WorldDefaultTypeInternal _World_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::MessageEntity* Arena::CreateMaybeMessage<::MessageEntity>(Arena*);
 template<> ::PlayerStatus* Arena::CreateMaybeMessage<::PlayerStatus>(Arena*);
 template<> ::TSave* Arena::CreateMaybeMessage<::TSave>(Arena*);
-template<> ::World* Arena::CreateMaybeMessage<::World>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
 enum MessageType : int {
-  WORLD = 0,
+  UNKNOWN = 0,
   TSAVE = 1,
   PLAYER_STATUS = 2,
   MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool MessageType_IsValid(int value);
-constexpr MessageType MessageType_MIN = WORLD;
+constexpr MessageType MessageType_MIN = UNKNOWN;
 constexpr MessageType MessageType_MAX = PLAYER_STATUS;
 constexpr int MessageType_ARRAYSIZE = MessageType_MAX + 1;
 
@@ -91,213 +87,6 @@ inline bool MessageType_Parse(
     MessageType_descriptor(), name, value);
 }
 // ===================================================================
-
-class World final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:World) */ {
- public:
-  inline World() : World(nullptr) {}
-  ~World() override;
-  explicit PROTOBUF_CONSTEXPR World(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  World(const World& from);
-  World(World&& from) noexcept
-    : World() {
-    *this = ::std::move(from);
-  }
-
-  inline World& operator=(const World& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline World& operator=(World&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const World& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const World* internal_default_instance() {
-    return reinterpret_cast<const World*>(
-               &_World_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(World& a, World& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(World* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(World* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  World* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<World>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const World& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const World& from) {
-    World::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(World* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "World";
-  }
-  protected:
-  explicit World(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kIdFieldNumber = 1,
-    kNameFieldNumber = 2,
-    kPasswordFieldNumber = 3,
-    kPlayerCountFieldNumber = 4,
-    kMaxPlayerCountFieldNumber = 5,
-  };
-  // string Id = 1;
-  void clear_id();
-  const std::string& id() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_id(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_id();
-  PROTOBUF_NODISCARD std::string* release_id();
-  void set_allocated_id(std::string* id);
-  private:
-  const std::string& _internal_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_id(const std::string& value);
-  std::string* _internal_mutable_id();
-  public:
-
-  // string name = 2;
-  void clear_name();
-  const std::string& name() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* name);
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
-  public:
-
-  // string password = 3;
-  void clear_password();
-  const std::string& password() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_password(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_password();
-  PROTOBUF_NODISCARD std::string* release_password();
-  void set_allocated_password(std::string* password);
-  private:
-  const std::string& _internal_password() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_password(const std::string& value);
-  std::string* _internal_mutable_password();
-  public:
-
-  // int32 playerCount = 4;
-  void clear_playercount();
-  int32_t playercount() const;
-  void set_playercount(int32_t value);
-  private:
-  int32_t _internal_playercount() const;
-  void _internal_set_playercount(int32_t value);
-  public:
-
-  // int32 maxPlayerCount = 5;
-  void clear_maxplayercount();
-  int32_t maxplayercount() const;
-  void set_maxplayercount(int32_t value);
-  private:
-  int32_t _internal_maxplayercount() const;
-  void _internal_set_maxplayercount(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:World)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
-    int32_t playercount_;
-    int32_t maxplayercount_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_mvvvvvvm_2eproto;
-};
-// -------------------------------------------------------------------
 
 class TSave final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:TSave) */ {
@@ -347,7 +136,7 @@ class TSave final :
                &_TSave_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    0;
 
   friend void swap(TSave& a, TSave& b) {
     a.Swap(&b);
@@ -881,7 +670,7 @@ class PlayerStatus final :
                &_PlayerStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    1;
 
   friend void swap(PlayerStatus& a, PlayerStatus& b) {
     a.Swap(&b);
@@ -1128,7 +917,7 @@ class MessageEntity final :
                &_MessageEntity_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(MessageEntity& a, MessageEntity& b) {
     a.Swap(&b);
@@ -1201,31 +990,12 @@ class MessageEntity final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kWorldFieldNumber = 3,
-    kTsaveFieldNumber = 4,
-    kPsFieldNumber = 5,
+    kTsaveFieldNumber = 3,
+    kPsFieldNumber = 4,
     kIdFieldNumber = 1,
     kTypeFieldNumber = 2,
   };
-  // optional .World world = 3;
-  bool has_world() const;
-  private:
-  bool _internal_has_world() const;
-  public:
-  void clear_world();
-  const ::World& world() const;
-  PROTOBUF_NODISCARD ::World* release_world();
-  ::World* mutable_world();
-  void set_allocated_world(::World* world);
-  private:
-  const ::World& _internal_world() const;
-  ::World* _internal_mutable_world();
-  public:
-  void unsafe_arena_set_allocated_world(
-      ::World* world);
-  ::World* unsafe_arena_release_world();
-
-  // optional .TSave tsave = 4;
+  // optional .TSave tsave = 3;
   bool has_tsave() const;
   private:
   bool _internal_has_tsave() const;
@@ -1243,7 +1013,7 @@ class MessageEntity final :
       ::TSave* tsave);
   ::TSave* unsafe_arena_release_tsave();
 
-  // optional .PlayerStatus ps = 5;
+  // optional .PlayerStatus ps = 4;
   bool has_ps() const;
   private:
   bool _internal_has_ps() const;
@@ -1289,7 +1059,6 @@ class MessageEntity final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-    ::World* world_;
     ::TSave* tsave_;
     ::PlayerStatus* ps_;
     int64_t id_;
@@ -1307,200 +1076,6 @@ class MessageEntity final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// World
-
-// string Id = 1;
-inline void World::clear_id() {
-  _impl_.id_.ClearToEmpty();
-}
-inline const std::string& World::id() const {
-  // @@protoc_insertion_point(field_get:World.Id)
-  return _internal_id();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void World::set_id(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:World.Id)
-}
-inline std::string* World::mutable_id() {
-  std::string* _s = _internal_mutable_id();
-  // @@protoc_insertion_point(field_mutable:World.Id)
-  return _s;
-}
-inline const std::string& World::_internal_id() const {
-  return _impl_.id_.Get();
-}
-inline void World::_internal_set_id(const std::string& value) {
-  
-  _impl_.id_.Set(value, GetArenaForAllocation());
-}
-inline std::string* World::_internal_mutable_id() {
-  
-  return _impl_.id_.Mutable(GetArenaForAllocation());
-}
-inline std::string* World::release_id() {
-  // @@protoc_insertion_point(field_release:World.Id)
-  return _impl_.id_.Release();
-}
-inline void World::set_allocated_id(std::string* id) {
-  if (id != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.id_.SetAllocated(id, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.id_.IsDefault()) {
-    _impl_.id_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:World.Id)
-}
-
-// string name = 2;
-inline void World::clear_name() {
-  _impl_.name_.ClearToEmpty();
-}
-inline const std::string& World::name() const {
-  // @@protoc_insertion_point(field_get:World.name)
-  return _internal_name();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void World::set_name(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:World.name)
-}
-inline std::string* World::mutable_name() {
-  std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:World.name)
-  return _s;
-}
-inline const std::string& World::_internal_name() const {
-  return _impl_.name_.Get();
-}
-inline void World::_internal_set_name(const std::string& value) {
-  
-  _impl_.name_.Set(value, GetArenaForAllocation());
-}
-inline std::string* World::_internal_mutable_name() {
-  
-  return _impl_.name_.Mutable(GetArenaForAllocation());
-}
-inline std::string* World::release_name() {
-  // @@protoc_insertion_point(field_release:World.name)
-  return _impl_.name_.Release();
-}
-inline void World::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.name_.IsDefault()) {
-    _impl_.name_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:World.name)
-}
-
-// string password = 3;
-inline void World::clear_password() {
-  _impl_.password_.ClearToEmpty();
-}
-inline const std::string& World::password() const {
-  // @@protoc_insertion_point(field_get:World.password)
-  return _internal_password();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void World::set_password(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.password_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:World.password)
-}
-inline std::string* World::mutable_password() {
-  std::string* _s = _internal_mutable_password();
-  // @@protoc_insertion_point(field_mutable:World.password)
-  return _s;
-}
-inline const std::string& World::_internal_password() const {
-  return _impl_.password_.Get();
-}
-inline void World::_internal_set_password(const std::string& value) {
-  
-  _impl_.password_.Set(value, GetArenaForAllocation());
-}
-inline std::string* World::_internal_mutable_password() {
-  
-  return _impl_.password_.Mutable(GetArenaForAllocation());
-}
-inline std::string* World::release_password() {
-  // @@protoc_insertion_point(field_release:World.password)
-  return _impl_.password_.Release();
-}
-inline void World::set_allocated_password(std::string* password) {
-  if (password != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.password_.SetAllocated(password, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.password_.IsDefault()) {
-    _impl_.password_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:World.password)
-}
-
-// int32 playerCount = 4;
-inline void World::clear_playercount() {
-  _impl_.playercount_ = 0;
-}
-inline int32_t World::_internal_playercount() const {
-  return _impl_.playercount_;
-}
-inline int32_t World::playercount() const {
-  // @@protoc_insertion_point(field_get:World.playerCount)
-  return _internal_playercount();
-}
-inline void World::_internal_set_playercount(int32_t value) {
-  
-  _impl_.playercount_ = value;
-}
-inline void World::set_playercount(int32_t value) {
-  _internal_set_playercount(value);
-  // @@protoc_insertion_point(field_set:World.playerCount)
-}
-
-// int32 maxPlayerCount = 5;
-inline void World::clear_maxplayercount() {
-  _impl_.maxplayercount_ = 0;
-}
-inline int32_t World::_internal_maxplayercount() const {
-  return _impl_.maxplayercount_;
-}
-inline int32_t World::maxplayercount() const {
-  // @@protoc_insertion_point(field_get:World.maxPlayerCount)
-  return _internal_maxplayercount();
-}
-inline void World::_internal_set_maxplayercount(int32_t value) {
-  
-  _impl_.maxplayercount_ = value;
-}
-inline void World::set_maxplayercount(int32_t value) {
-  _internal_set_maxplayercount(value);
-  // @@protoc_insertion_point(field_set:World.maxPlayerCount)
-}
-
-// -------------------------------------------------------------------
-
 // TSave
 
 // repeated bool worldmap = 1;
@@ -2549,99 +2124,9 @@ inline void MessageEntity::set_type(::MessageType value) {
   // @@protoc_insertion_point(field_set:MessageEntity.type)
 }
 
-// optional .World world = 3;
-inline bool MessageEntity::_internal_has_world() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.world_ != nullptr);
-  return value;
-}
-inline bool MessageEntity::has_world() const {
-  return _internal_has_world();
-}
-inline void MessageEntity::clear_world() {
-  if (_impl_.world_ != nullptr) _impl_.world_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const ::World& MessageEntity::_internal_world() const {
-  const ::World* p = _impl_.world_;
-  return p != nullptr ? *p : reinterpret_cast<const ::World&>(
-      ::_World_default_instance_);
-}
-inline const ::World& MessageEntity::world() const {
-  // @@protoc_insertion_point(field_get:MessageEntity.world)
-  return _internal_world();
-}
-inline void MessageEntity::unsafe_arena_set_allocated_world(
-    ::World* world) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.world_);
-  }
-  _impl_.world_ = world;
-  if (world) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:MessageEntity.world)
-}
-inline ::World* MessageEntity::release_world() {
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::World* temp = _impl_.world_;
-  _impl_.world_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::World* MessageEntity::unsafe_arena_release_world() {
-  // @@protoc_insertion_point(field_release:MessageEntity.world)
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::World* temp = _impl_.world_;
-  _impl_.world_ = nullptr;
-  return temp;
-}
-inline ::World* MessageEntity::_internal_mutable_world() {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  if (_impl_.world_ == nullptr) {
-    auto* p = CreateMaybeMessage<::World>(GetArenaForAllocation());
-    _impl_.world_ = p;
-  }
-  return _impl_.world_;
-}
-inline ::World* MessageEntity::mutable_world() {
-  ::World* _msg = _internal_mutable_world();
-  // @@protoc_insertion_point(field_mutable:MessageEntity.world)
-  return _msg;
-}
-inline void MessageEntity::set_allocated_world(::World* world) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete _impl_.world_;
-  }
-  if (world) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(world);
-    if (message_arena != submessage_arena) {
-      world = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, world, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
-  }
-  _impl_.world_ = world;
-  // @@protoc_insertion_point(field_set_allocated:MessageEntity.world)
-}
-
-// optional .TSave tsave = 4;
+// optional .TSave tsave = 3;
 inline bool MessageEntity::_internal_has_tsave() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.tsave_ != nullptr);
   return value;
 }
@@ -2650,7 +2135,7 @@ inline bool MessageEntity::has_tsave() const {
 }
 inline void MessageEntity::clear_tsave() {
   if (_impl_.tsave_ != nullptr) _impl_.tsave_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline const ::TSave& MessageEntity::_internal_tsave() const {
   const ::TSave* p = _impl_.tsave_;
@@ -2668,14 +2153,14 @@ inline void MessageEntity::unsafe_arena_set_allocated_tsave(
   }
   _impl_.tsave_ = tsave;
   if (tsave) {
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:MessageEntity.tsave)
 }
 inline ::TSave* MessageEntity::release_tsave() {
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
   ::TSave* temp = _impl_.tsave_;
   _impl_.tsave_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -2691,13 +2176,13 @@ inline ::TSave* MessageEntity::release_tsave() {
 }
 inline ::TSave* MessageEntity::unsafe_arena_release_tsave() {
   // @@protoc_insertion_point(field_release:MessageEntity.tsave)
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
   ::TSave* temp = _impl_.tsave_;
   _impl_.tsave_ = nullptr;
   return temp;
 }
 inline ::TSave* MessageEntity::_internal_mutable_tsave() {
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000001u;
   if (_impl_.tsave_ == nullptr) {
     auto* p = CreateMaybeMessage<::TSave>(GetArenaForAllocation());
     _impl_.tsave_ = p;
@@ -2721,17 +2206,17 @@ inline void MessageEntity::set_allocated_tsave(::TSave* tsave) {
       tsave = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, tsave, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.tsave_ = tsave;
   // @@protoc_insertion_point(field_set_allocated:MessageEntity.tsave)
 }
 
-// optional .PlayerStatus ps = 5;
+// optional .PlayerStatus ps = 4;
 inline bool MessageEntity::_internal_has_ps() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.ps_ != nullptr);
   return value;
 }
@@ -2740,7 +2225,7 @@ inline bool MessageEntity::has_ps() const {
 }
 inline void MessageEntity::clear_ps() {
   if (_impl_.ps_ != nullptr) _impl_.ps_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
 inline const ::PlayerStatus& MessageEntity::_internal_ps() const {
   const ::PlayerStatus* p = _impl_.ps_;
@@ -2758,14 +2243,14 @@ inline void MessageEntity::unsafe_arena_set_allocated_ps(
   }
   _impl_.ps_ = ps;
   if (ps) {
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000002u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000002u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:MessageEntity.ps)
 }
 inline ::PlayerStatus* MessageEntity::release_ps() {
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
   ::PlayerStatus* temp = _impl_.ps_;
   _impl_.ps_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -2781,13 +2266,13 @@ inline ::PlayerStatus* MessageEntity::release_ps() {
 }
 inline ::PlayerStatus* MessageEntity::unsafe_arena_release_ps() {
   // @@protoc_insertion_point(field_release:MessageEntity.ps)
-  _impl_._has_bits_[0] &= ~0x00000004u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
   ::PlayerStatus* temp = _impl_.ps_;
   _impl_.ps_ = nullptr;
   return temp;
 }
 inline ::PlayerStatus* MessageEntity::_internal_mutable_ps() {
-  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_._has_bits_[0] |= 0x00000002u;
   if (_impl_.ps_ == nullptr) {
     auto* p = CreateMaybeMessage<::PlayerStatus>(GetArenaForAllocation());
     _impl_.ps_ = p;
@@ -2811,9 +2296,9 @@ inline void MessageEntity::set_allocated_ps(::PlayerStatus* ps) {
       ps = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, ps, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000004u;
+    _impl_._has_bits_[0] |= 0x00000002u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000004u;
+    _impl_._has_bits_[0] &= ~0x00000002u;
   }
   _impl_.ps_ = ps;
   // @@protoc_insertion_point(field_set_allocated:MessageEntity.ps)
@@ -2822,8 +2307,6 @@ inline void MessageEntity::set_allocated_ps(::PlayerStatus* ps) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

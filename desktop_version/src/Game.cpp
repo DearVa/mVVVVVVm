@@ -5418,100 +5418,104 @@ void Game::initteleportermode(void)
 	}
 }
 
-void Game::GetTSave(TSave &save)
+TSave *Game::GetTSave()
 {
+	const auto save = new TSave();
+
 	// Flags, map and stats
-	//for (const bool i : map.explored)
-	//{
-	//	save.add_worldmap(i);
-	//}
-	//
-	//for (const bool i : obj.flags)
-	//{
-	//	save.add_flags(i);
-	//}
-	//
-	//for (const bool i : crewstats)
-	//{
-	//	save.add_crewstats(i);
-	//}
-	//
-	//for (const bool i : obj.collect)
-	//{
-	//	save.add_collect(i);
-	//}
+	for (const bool i : map.explored)
+	{
+		save->add_worldmap(i);
+	}
+	
+	for (const bool i : obj.flags)
+	{
+		save->add_flags(i);
+	}
+	
+	for (const bool i : crewstats)
+	{
+		save->add_crewstats(i);
+	}
+	
+	for (const bool i : obj.collect)
+	{
+		save->add_collect(i);
+	}
 
 	//Position
 
-	save.set_savex(savex);
-	save.set_savex(savey);
+	save->set_savex(savex);
+	save->set_savey(savey);
 
-	save.set_saverx(saverx);
-	save.set_saverx(savery);
+	save->set_saverx(saverx);
+	save->set_savery(savery);
 
-	save.set_savegc(savegc);
-	save.set_savedir(savedir);
+	save->set_savegc(savegc);
+	save->set_savedir(savedir);
 
-	save.set_savepoint(savepoint);
-	save.set_trinkets(trinkets());
+	save->set_savepoint(savepoint);
+	save->set_trinkets(trinkets());
 
 	//Special stats
 
 	if (music.nicefade)
 	{
-		save.set_currentsong(music.nicechange);
+		save->set_currentsong(music.nicechange);
 	}
 	else
 	{
-		save.set_currentsong(music.currentsong);
+		save->set_currentsong(music.currentsong);
 	}
 
-	save.set_showtargets(map.showtargets);
+	save->set_showtargets(map.showtargets);
 
-	save.set_teleportscript(teleportscript);
-	save.set_companion(companion);
+	save->set_teleportscript(teleportscript);
+	save->set_companion(companion);
 
-	save.set_lastsaved(lastsaved);
-	save.set_supercrewmate(supercrewmate);
+	save->set_lastsaved(lastsaved);
+	save->set_supercrewmate(supercrewmate);
 
-	save.set_scmprogress(scmprogress);
+	save->set_scmprogress(scmprogress);
 
-	save.set_frames(frames);
-	save.set_seconds(seconds);
+	save->set_frames(frames);
+	save->set_seconds(seconds);
 
-	save.set_minutes(minutes);
-	save.set_hours(hours);
+	save->set_minutes(minutes);
+	save->set_hours(hours);
 
-	save.set_deathcounts(deathcounts);
-	save.set_totalflips(totalflips);
+	save->set_deathcounts(deathcounts);
+	save->set_totalflips(totalflips);
 
-	save.set_hardestroom(hardestroom);
-	save.set_hardestroomdeaths(hardestroomdeaths);
+	save->set_hardestroom(hardestroom);
+	save->set_hardestroomdeaths(hardestroomdeaths);
 
-	save.set_finalmode(map.finalmode);
-	save.set_finalstretch(map.finalstretch);
+	save->set_finalmode(map.finalmode);
+	save->set_finalstretch(map.finalstretch);
 	
-	save.set_summary(savearea + ", " + timestring());
+	save->set_summary(savearea + ", " + timestring());
+
+	return save;
 }
 
-void Game::LoadTSave(TSave &save)
+void Game::LoadTSave(const TSave &save)
 {
-	//for (int i = 0; i < save.worldmap_size(); i++)
-	//{
-	//	map.explored[i] = save.worldmap(i);
-	//}
-	//for (int i = 0; i < save.flags_size(); i++)
-	//{
-	//	obj.flags[i] = save.flags(i);
-	//}
-	//for (int i = 0; i < save.crewstats_size(); i++)
-	//{
-	//	crewstats[i] = save.crewstats(i);
-	//}
-	//for (int i = 0; i < save.collect_size(); i++)
-	//{
-	//	obj.collect[i] = save.collect(i);
-	//}
+	for (int i = 0; i < save.worldmap_size(); i++)
+	{
+		map.explored[i] = save.worldmap(i);
+	}
+	for (int i = 0; i < save.flags_size(); i++)
+	{
+		obj.flags[i] = save.flags(i);
+	}
+	for (int i = 0; i < save.crewstats_size(); i++)
+	{
+		crewstats[i] = save.crewstats(i);
+	}
+	for (int i = 0; i < save.collect_size(); i++)
+	{
+		obj.collect[i] = save.collect(i);
+	}
 
 	map.finalmode = save.finalmode();
 	map.finalstretch = save.finalstretch();
@@ -5535,8 +5539,7 @@ void Game::LoadTSave(TSave &save)
 	totalflips = save.totalflips();
 	hardestroom = save.hardestroom();
 	hardestroomdeaths = save.hardestroomdeaths();
-	const int song = save.currentsong();
-	if (song != -1)
+	if (const int song = save.currentsong(); song != -1)
 	{
 		music.play(song);
 	}

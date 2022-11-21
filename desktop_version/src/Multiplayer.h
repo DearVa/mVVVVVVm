@@ -24,6 +24,11 @@ public:
 	 */
 	std::unordered_map<int64_t, MessageEntity> messageEntities;
 
+	/**
+	 * \brief 记录某个MessageEntity是否需要发送更新数据，这里面只记录属于自己的Entity
+	 */
+	std::unordered_map<int64_t, bool> messageEntitiesDirty;
+
 	bool Initialize();
 	void Deinitialize();
 
@@ -50,6 +55,10 @@ private:
 	 */
 	int64_t TrackAndSetEntity(void *data);
 
+	static int32_t CommonReadUpdate(const int64_t owner_id, const int64_t entity_id, librg_world *w, librg_event *e);
+	static int32_t CommonWriteUpdate(const int64_t owner_id, const int64_t entity_id, librg_world *w, librg_event *e);
+
+	static int32_t HandlePlayerStatusWrite(MessageEntity &me, void *buffer, const int32_t max_length);
 	static void HandlePlayerStatusRead(librg_world *w, librg_event *e, const PlayerStatus &status);
 };
 

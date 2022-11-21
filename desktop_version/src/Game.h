@@ -220,8 +220,8 @@ public:
 
     void initteleportermode(void);
 
-    void GetTSave(TSave &save);
-    void LoadTSave(TSave &save);
+    TSave *GetTSave();
+    void LoadTSave(const TSave &save);
 
     const char* saveFilePath;
 

@@ -312,7 +312,8 @@ static void handlefadetomode(void)
 		if (gotomode == 132 && !mp.isServer)
 		{
 			// 等待服务器发来存档信息
-			if (mp.messageEntities.find(INT64_MAX / 2) == mp.messageEntities.end())
+			mp.Update();
+			if (const auto tsave_it = mp.messageEntities.find(INT64_MAX / 2); tsave_it == mp.messageEntities.end() || !(*tsave_it).second.has_tsave())
 			{
 				return;  // 还没接收到，继续等待吧
 			}
@@ -1442,7 +1443,7 @@ static void menuactionpress(void)
 			music.playef(11);
 			// game.createmenu(Menu::joingame);
 			mp.isServer = false;
-			startmode(0);
+			startmode(132);
 			map.nexttowercolour();
 			break;
 		default:  // back

@@ -3057,7 +3057,7 @@ void scriptclass::startgamemode( int t )
         hardreset();
         game.start();
 
-        game.LoadTSave((*mp.messageEntities.find(INT64_MAX / 2)).second.t_save);
+        game.LoadTSave((*mp.messageEntities.find(INT64_MAX / 2)).second.tsave());
 
         game.gravitycontrol = game.savegc;
         game.jumpheld = true;

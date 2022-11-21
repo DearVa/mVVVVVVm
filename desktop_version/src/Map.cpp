@@ -815,15 +815,14 @@ void mapclass::resetplayer(void)
 
 void mapclass::resetplayer(const bool player_died)
 {
-    bool was_in_tower = towermode;
+	const bool was_in_tower = towermode;
     if (game.roomx != game.saverx || game.roomy != game.savery)
     {
         gotoroom(game.saverx, game.savery);
     }
 
     game.deathseq = -1;
-    int i = obj.getplayer();
-    if(INBOUNDS_VEC(i, obj.entities))
+	if(const int i = obj.getplayer(); INBOUNDS_VEC(i, obj.entities))
     {
         obj.entities[i].vx = 0;
         obj.entities[i].vy = 0;
