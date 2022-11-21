@@ -7,50 +7,6 @@
 #include "protobuf/mvvvvvvm.pb.h"
 #include <vector>
 
-enum MessageType
-{
-	WorldMsg,
-	TSaveMsg,
-	PlayerStatusMsg,
-};
-
-/**
- * \brief 通过这个Entity来传输数据
- */
-class MessageEntity
-{
-public:
-	int64_t id;
-	MessageType type;
-
-	union
-	{
-		World world;
-		TSave t_save;
-		PlayerStatus ps;
-	};
-
-	/**
-	 * \brief 反序列化，注意这里的data是数据开头
-	 * \param data 
-	 * \param size 
-	 * \return 
-	 */
-	bool Parse(void *data, size_t max_size);
-
-	/**
-	 * \brief 序列化，返回序列化的长度
-	 * \param buffer 
-	 * \param size 
-	 * \return 
-	 */
-	size_t Serialize(void *buffer, size_t max_size) const;
-
-	void *data();
-
-	~MessageEntity() { }
-};
-
 class Multiplayer
 {
 public:

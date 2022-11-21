@@ -5421,26 +5421,25 @@ void Game::initteleportermode(void)
 void Game::GetTSave(TSave &save)
 {
 	// Flags, map and stats
-	std::ostringstream os;
-	for (const bool i : map.explored)
-	{
-		save.add_worldmap(i);
-	}
-
-	for (const bool i : obj.flags)
-	{
-		save.add_flags(i);
-	}
-
-	for (const bool i : crewstats)
-	{
-		save.add_crewstats(i);
-	}
-
-	for (const bool i : obj.collect)
-	{
-		save.add_collect(i);
-	}
+	//for (const bool i : map.explored)
+	//{
+	//	save.add_worldmap(i);
+	//}
+	//
+	//for (const bool i : obj.flags)
+	//{
+	//	save.add_flags(i);
+	//}
+	//
+	//for (const bool i : crewstats)
+	//{
+	//	save.add_crewstats(i);
+	//}
+	//
+	//for (const bool i : obj.collect)
+	//{
+	//	save.add_collect(i);
+	//}
 
 	//Position
 
@@ -5497,22 +5496,22 @@ void Game::GetTSave(TSave &save)
 
 void Game::LoadTSave(TSave &save)
 {
-	for (int i = 0; i < save.worldmap_size(); i++)
-	{
-		map.explored[i] = save.worldmap(i);
-	}
-	for (int i = 0; i < save.flags_size(); i++)
-	{
-		obj.flags[i] = save.flags(i);
-	}
-	for (int i = 0; i < save.crewstats_size(); i++)
-	{
-		crewstats[i] = save.crewstats(i);
-	}
-	for (int i = 0; i < save.collect_size(); i++)
-	{
-		obj.collect[i] = save.collect(i);
-	}
+	//for (int i = 0; i < save.worldmap_size(); i++)
+	//{
+	//	map.explored[i] = save.worldmap(i);
+	//}
+	//for (int i = 0; i < save.flags_size(); i++)
+	//{
+	//	obj.flags[i] = save.flags(i);
+	//}
+	//for (int i = 0; i < save.crewstats_size(); i++)
+	//{
+	//	crewstats[i] = save.crewstats(i);
+	//}
+	//for (int i = 0; i < save.collect_size(); i++)
+	//{
+	//	obj.collect[i] = save.collect(i);
+	//}
 
 	map.finalmode = save.finalmode();
 	map.finalstretch = save.finalstretch();
@@ -5536,7 +5535,8 @@ void Game::LoadTSave(TSave &save)
 	totalflips = save.totalflips();
 	hardestroom = save.hardestroom();
 	hardestroomdeaths = save.hardestroomdeaths();
-	if (const int song = save.currentsong(); song != -1)
+	const int song = save.currentsong();
+	if (song != -1)
 	{
 		music.play(song);
 	}

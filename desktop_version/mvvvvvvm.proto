@@ -1,9 +1,11 @@
 syntax = "proto3";
 
 message World {
-    string name = 1;
-    int32 playerCount = 2;
-    int32 maxPlayerCount = 3;
+    string Id = 1;
+    string name = 2;
+    string password = 3;
+    int32 playerCount = 4;
+    int32 maxPlayerCount = 5;
 }
 
 message TSave {
@@ -50,4 +52,18 @@ message PlayerStatus {
     int32 dir = 8;
     int32 tile = 9;
     int32 flip = 10;
+}
+
+enum MessageType {
+    WORLD = 0;
+    TSAVE = 1;
+    PLAYER_STATUS = 2;
+}
+
+message MessageEntity {
+    int64 id = 1;
+    MessageType type = 2;
+    optional World world = 3;
+    optional TSave tsave = 4;
+    optional PlayerStatus ps = 5;
 }

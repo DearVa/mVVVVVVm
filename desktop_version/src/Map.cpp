@@ -2208,12 +2208,13 @@ void mapclass::loadlevel(int rx, int ry)
         }
     }
 
-    for (const auto& [_, snd] : mp.playerList)
+    for (const auto& it : mp.playerList)
     {
         //if (INBOUNDS_VEC(player, obj.entities) && obj.entities[player].id == status.id)
         //{
         //    continue;  // 不要添加自己
         //}
+        const auto snd = it.second;
         obj.createentity(snd->x(), snd->y(), 132, snd->dir(), 8, snd->id(), snd->rx() != currentRx || snd->ry() != currentRy);  // 创建其他玩家实体
     }
 }

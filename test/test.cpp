@@ -19,7 +19,7 @@
 #define ENET_IMPLEMENTATION
 #include <cstdio>
 #include <enet/enet.h>
-#include "../desktop_version/src/protobuf/mvvvvvvm.pb.h"
+#include "../desktop_version/src/mvvvvvvm.pb.h"
 
 #if defined(__GCC__) || defined(__GNUC__) || defined(__clang__)
 #pragma GCC diagnostic pop

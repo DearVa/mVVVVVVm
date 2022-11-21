@@ -93,7 +93,7 @@ bool Multiplayer::HostWorld()
 
 	// 传输存档的信息
 	MessageEntity me{};
-	game.GetTSave(me.t_save);
+	game.GetTSave(me.tsave());
 	TrackAndSetEntity(&me);
 
 	return true;
@@ -156,8 +156,8 @@ int32_t Multiplayer::ServerWriteUpdate(librg_world *w, librg_event *e)
 	}
 
 	MessageEntity me{};
-
-	if (const int i = obj.getplayer(); INBOUNDS_VEC(i, obj.entities))
+	const int i = obj.getplayer();
+	if (INBOUNDS_VEC(i, obj.entities))
 	{
 		me.ps.set_id(0);
 		me.ps.set_rx(map.currentRx);
@@ -363,8 +363,8 @@ int32_t Multiplayer::ClientWriteUpdate(librg_world *w, librg_event *e)
 	}
 
 	MessageEntity me{};
-
-	if (const int i = obj.getplayer(); INBOUNDS_VEC(i, obj.entities))
+	const int i = obj.getplayer();
+	if (INBOUNDS_VEC(i, obj.entities))
 	{
 		me.ps.set_id(entity_id);
 		me.ps.set_rx(map.currentRx);
@@ -401,8 +401,8 @@ int Multiplayer::ClientUpdate()
 			playerList.insert_or_assign(0, &me.ps);  // 添加服务器的玩家对象
 
 			obj.createentity(0, 0, 132, 0, 8, 0, 1);
-
-			if (const int player = obj.getplayer(); INBOUNDS_VEC(player, obj.entities))
+			const int player = obj.getplayer();
+			if (INBOUNDS_VEC(player, obj.entities))
 			{
 				obj.entities[player].id = currentID;  // 设置自己的玩家对象id
 			}
@@ -412,7 +412,8 @@ int Multiplayer::ClientUpdate()
 			mp.playerList.erase(0);
 
 			currentID = 0;
-			if (const int player = obj.getplayer(); INBOUNDS_VEC(player, obj.entities))
+			const int player = obj.getplayer();
+			if (INBOUNDS_VEC(player, obj.entities))
 			{
 				obj.entities[player].id = 0;  // 设置自己的玩家对象id
 			}
@@ -473,8 +474,8 @@ auto Multiplayer::HandlePlayerStatusRead(librg_world* w, librg_event* e, const P
 {
 	const librg_chunk chunk = librg_chunk_from_chunkpos(w, status.x() % 20, status.y() % 20, map.calct(status.x(), status.y()));
 	librg_entity_chunk_set(w, status.id(), chunk);
-
-	if (const int i = obj.getotherplayer(status.id()); INBOUNDS_VEC(i, obj.entities))
+	const int i = obj.getotherplayer(status.id());
+	if (INBOUNDS_VEC(i, obj.entities))
 	{
 		obj.entities[i].xp = status.x();
 		obj.entities[i].yp = status.y();
