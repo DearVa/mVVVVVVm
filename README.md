@@ -1,6 +1,18 @@
-This is the source code to VVVVVV, version 2.0+. For more context about this release, see the [announcement](http://distractionware.com/blog/2020/01/vvvvvv-is-now-open-source/) on Terry's blog!
+<div align=center>
+<h1>MVVVVVVM: Multiplayer VVVVVV!</h1>
+<img width='256' height='256' src="https://raw.githubusercontent.com/DearVa/mVVVVVVm/master/desktop_version/MVVVVVVM.png"/>
+</div>
 
-License
+## ✨ Current status: In developping
++ #### ✅ Game save sync
++ #### ⏩ Player sync
++ #### ⏩ Entities sync
+
++ #### ✅ LAN
++ #### ⏩ P2P 
+
+
+## License
 -------
 VVVVVV's source code is made available under a custom license. See [LICENSE.md](LICENSE.md) for more details.
 
